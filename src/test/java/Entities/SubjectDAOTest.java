@@ -4,10 +4,7 @@ import D4C.encentral.dao.subject.SubjectDAOImpl;
 import D4C.encentral.dao.user.StudentDAOImpl;
 import D4C.encentral.dao.user.TeacherDAOImpl;
 import D4C.encentral.dto.subject.SubjectDTO;
-import D4C.encentral.dto.user.student.StudentCreationDTO;
-import D4C.encentral.dto.user.student.StudentDTO;
 import D4C.encentral.dto.user.teacher.TeacherCreationDTO;
-import D4C.encentral.model.user.Year;
 import D4C.util.HibernateUtil;
 import jakarta.persistence.EntityManager;
 import org.junit.After;
@@ -22,7 +19,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class SubjectDAO {
+public class SubjectDAOTest {
     @ClassRule
     public static PostgreSQLContainer postgreSQLContainer = new PostgreSQLContainer<>("postgres:13")
             .withDatabaseName("test")
