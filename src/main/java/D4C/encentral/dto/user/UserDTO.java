@@ -1,5 +1,7 @@
 package D4C.encentral.dto.user;
 
+import org.testcontainers.shaded.com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Objects;
 
 /**
@@ -7,12 +9,15 @@ import java.util.Objects;
  */
 abstract public class UserDTO {
 
+    @JsonProperty("first_name")
     private String firstName;
-    
-    private String lastName;
-    
-    private Long regNo;
 
+    @JsonProperty("last_name")
+    private String lastName;
+
+    @JsonProperty("reg_no")
+    private Long regNo;
+    @JsonProperty("reg_date")
     private String regDate;
     
     public UserDTO(){}
@@ -38,6 +43,10 @@ abstract public class UserDTO {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getName(){
+        return getFirstName()+" "+getLastName();
     }
 
     public Long getRegNo() {
@@ -78,4 +87,5 @@ abstract public class UserDTO {
                 ", regDate="+ regDate +
                 " ";
     }
+
 }

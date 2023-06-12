@@ -65,12 +65,32 @@ public class Subject {
         this.teachers = teachers;
     }
 
+    public void addTeacher(Teacher teacher){
+        this.getTeachers().add(teacher);
+        teacher.getSubjects().add(this);
+    }
+
+    public void removeTeacher(Teacher teacher){
+        this.getTeachers().remove(teacher);
+        teacher.getSubjects().remove(this);
+    }
+
     public Set<Student> getStudents() {
         return students;
     }
 
     public void setStudents(Set<Student> students) {
         this.students = students;
+    }
+
+    public void addStudent(Student student){
+        this.getStudents().add(student);
+        student.getSubjects().add(this);
+    }
+
+    public void removeStudent(Student student){
+        this.getStudents().remove(student);
+        student.getSubjects().remove(this);
     }
 
     @Override

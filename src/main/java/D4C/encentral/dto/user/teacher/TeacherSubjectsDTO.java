@@ -1,6 +1,7 @@
 package D4C.encentral.dto.user.teacher;
 
 import D4C.encentral.dto.subject.SubjectDTO;
+import org.testcontainers.shaded.com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Set;
 
@@ -8,8 +9,10 @@ import java.util.Set;
  * A DTO containting the list of all subjects a teacher is taking
  */
 public class TeacherSubjectsDTO {
+    @JsonProperty("teachers_subjects")
     private Set<SubjectDTO> subjects;
 
+    @JsonProperty("teacher_name")
     private TeacherDTO teacher;
 
     public TeacherSubjectsDTO() {

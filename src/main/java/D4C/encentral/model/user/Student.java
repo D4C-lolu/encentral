@@ -17,7 +17,7 @@ import java.util.Set;
 public class Student extends User {
 
     @Convert(converter = YearAttributeConverter.class)
-    @Column(name = "year")
+    @Column(name = "class_year")
     private Year year;
 
     @ManyToMany(fetch = FetchType.LAZY)

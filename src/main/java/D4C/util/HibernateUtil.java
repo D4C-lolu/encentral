@@ -1,10 +1,15 @@
 package  D4C.util;
 
+import com.querydsl.jpa.impl.JPAQueryFactory;
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityTransaction;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+
+import java.util.function.Consumer;
 
 
 /**
@@ -38,6 +43,22 @@ public class HibernateUtil {
     public static void shutdown() {
         if (registry != null) {
             StandardServiceRegistryBuilder.destroy(registry);
+        }
+    }
+
+    public static void executeInsideTransaction(Consumer<JPAQueryFactory> action) {
+
+        EntityManager entityManager = getSessionFactory().createEntityManager();
+
+        JPAQueryFactory queryFactory = new JPAQueryFactory(entityManager);
+        EntityTransaction tx = entityManager.getTransaction();
+        try {
+            tx.begin();
+            action.accept(queryFactory);
+            tx.commit();
+        } catch (RuntimeException e) {
+            tx.rollback();
+            throw e;
         }
     }
 }

@@ -18,4 +18,6 @@ public interface AdminMapper {
 
     @Mapping(source = "regDate", target = "regDate", dateFormat = "dd.MM.yyyy")
     Admin dtoToAdmin(AdminDTO adminDTO);
+
+    AdminDTO adminToDTO(Admin admin);
 }

@@ -9,10 +9,10 @@ import java.util.Set;
 
 /**
  * Class representing Teacher object
- *
+ * <p>
  * Multiple teachers can take multiple courses
  * e.g 2 teachers may take a single course/subject together and 1 teacher may take 2 different courses/subjects.
- *
+ * <p>
  * Each teacher can have a list of students to guide
  */
 @Entity
@@ -27,7 +27,7 @@ public class Teacher extends User {
     @OneToMany(mappedBy = "teacher")
     private Set<Student> students = new HashSet<>();
 
-    public Teacher(){
+    public Teacher() {
         super();
     }
 
@@ -51,10 +51,20 @@ public class Teacher extends User {
         this.students = students;
     }
 
+    public void addStudent(Student student) {
+        this.getStudents().add(student);
+        student.setTeacher(this);
+    }
+
+    public void removeStudent(Student student) {
+        this.getStudents().remove(student);
+        student.setTeacher(null);
+    }
+
     @Override
     public String toString() {
         return "Teacher{" +
-                super.toString()+
+                super.toString() +
                 "subjects=" + subjects +
                 ", students=" + students +
                 '}';

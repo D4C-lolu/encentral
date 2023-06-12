@@ -3,14 +3,17 @@ package D4C.encentral.dto.user.student;
 import D4C.encentral.dto.user.UserDTO;
 import D4C.encentral.dto.user.teacher.TeacherDTO;
 import D4C.encentral.model.user.Year;
+import org.testcontainers.shaded.com.fasterxml.jackson.annotation.JsonProperty;
 
 
 /**
  * A DTO for representing a student object
  */
 public class StudentDTO extends UserDTO {
+    @JsonProperty("year")
     private Year year;
 
+    @JsonProperty("teacher")
     private TeacherDTO teacher;
 
     public Year getYear() {

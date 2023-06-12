@@ -1,12 +1,15 @@
 package D4C.encentral.dto.subject;
 
 import D4C.encentral.model.subject.Subject;
+import org.testcontainers.shaded.com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * A DTO used for representing/creating a Subject object
  */
 public class SubjectDTO {
+    @JsonProperty("name")
     private String name;
+    @JsonProperty("subject_code")
     private String subjectCode;
 
     public SubjectDTO(){

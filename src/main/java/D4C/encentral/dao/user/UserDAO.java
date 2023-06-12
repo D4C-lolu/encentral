@@ -1,56 +1,64 @@
 package D4C.encentral.dao.user;
 
-import D4C.encentral.dto.user.admin.AdminCreationDTO;
-import D4C.encentral.dto.user.admin.AdminDTO;
-import D4C.encentral.dto.user.student.StudentCreationDTO;
+import D4C.encentral.dto.user.UserCreationDTO;
+import D4C.encentral.dto.user.UserDTO;
 import D4C.encentral.dto.user.student.StudentDTO;
-import D4C.encentral.dto.user.teacher.TeacherCreationDTO;
-import D4C.encentral.dto.user.teacher.TeacherDTO;
-import D4C.encentral.dto.user.teacher.TeacherSubjectsDTO;
+
 
 import java.util.*;
 
 /**
  * Interface for User Data Access Object
  */
-public interface UserDAO {
+public interface UserDAO<T extends UserDTO, S extends UserCreationDTO> {
 
-    StudentDTO getStudent(Long regNo);
+    /**
+     * Get a User DTO Object by its registration number.
+     * Checks that given password matches password field on user
+     * @param regNo - User's registration number
+     * @param password - User's password
+     * @return UserDTO
+     */
+    Optional<T> get(long regNo, String password);
 
-    TeacherDTO getTeacher(Long regNo);
+    /**
+     * Gets a User DTO object by its registration number
+     * @param regNo - User's registration number
+     * @return userDTO
+     */
+    Optional<T> get(long regNo);
 
-    AdminDTO getAdmin(Long regNo);
+    /**
+     * Get a List of all Users
+     * @return a list of all User DTOs
+     */
+    List<T> getAll();
 
-    TeacherDTO getGuide(Long regNo);
+    /**
+     * Adds User DTO to DB
+     * @param s - Creation DTO for user
+     */
+    void save(S s);
 
-    TeacherSubjectsDTO getTeacherStudents(Long regNo);
+    /**
+     * Updates the name fields of a User
+     * @param regNo - User regNo
+     * @param firstname
+     * @param lastname
+     */
+    void updateName(Long regNo, String firstname, String lastname);
 
-    boolean createStudent(StudentCreationDTO studentCreationDTO);
+    /**
+     * Updates the password field of a user
+     * @param regNo - User regNo
+     * @param password
+     */
+    void updatePassword(Long regNo, String password);
 
-    boolean createTeacher(TeacherCreationDTO teacherCreationDTO);
-
-    boolean createAdmin(AdminCreationDTO adminCreationDTO);
-
-    boolean assignStudentToTeacher(Long regNo);
-
-    boolean registerSubject(Long regNo, String subjectCode);
-
-    boolean removeSubject(Long regNo, String subjectCode);
-
-    boolean registerSubjects(Long regNo, List<String> subjectCodes);
-
-    boolean removeSubjects(Long regNo,List<String> subjectCodes);
-
-    boolean assignSubject(Long regNo,String subjectCode);
-
-    boolean unassignSubject(Long regNo, String subjectCode);
-
-    boolean editName(Long regNo);
-
-    boolean editPassword(Long regNo);
-
-    boolean deleteStudent(Long regNo);
-
-    boolean deleteTeacher(Long regNo);
+    /**
+     * Delete User Object
+     * @param regNo - User regNo
+     */
+    void delete(Long regNo);
 
 }

@@ -16,4 +16,23 @@ public enum Year {
     Year(int val) {
         this.val = val;
     }
+
+    public static Year fromInteger(int x){
+        switch(x){
+            case 1:
+                return JS1;
+            case 2:
+                return JS2;
+            case 3:
+                return JS3;
+            case 4:
+                return SS1;
+            case 5:
+                return SS2;
+            case 6:
+                return SS3;
+            default:
+                return null;
+        }
+    }
 }
