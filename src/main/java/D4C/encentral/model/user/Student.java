@@ -2,6 +2,7 @@ package D4C.encentral.model.user;
 
 import D4C.encentral.model.subject.Subject;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -23,6 +24,7 @@ public class Student extends User {
     @JoinTable(name = "student_subject",
             joinColumns = {@JoinColumn(name = "student")},
             inverseJoinColumns = {@JoinColumn(name = "subject")})
+    @Size(max=7)
     private Set<Subject> subjects = new HashSet<>();
 
     @ManyToOne

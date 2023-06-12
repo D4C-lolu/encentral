@@ -6,7 +6,7 @@ import java.util.Objects;
 /**
  * Base DTO class for creating a user
  */
-public class UserCreationDTO {
+abstract public class UserCreationDTO {
     private  String firstName;
     private String lastName;
     private String password;

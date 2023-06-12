@@ -1,14 +1,11 @@
 package D4C.encentral.dto.user;
 
-import java.time.LocalDateTime;
 import java.util.Objects;
-
-import static D4C.util.FormatDate.formatDate;
 
 /**
  * DTO object representing a user
  */
-public class UserDTO {
+abstract public class UserDTO {
 
     private String firstName;
     
@@ -16,11 +13,11 @@ public class UserDTO {
     
     private Long regNo;
 
-    private LocalDateTime regDate;
+    private String regDate;
     
     public UserDTO(){}
 
-    public UserDTO(String firstName, String lastName, Long regNo, LocalDateTime regDate) {
+    public UserDTO(String firstName, String lastName, Long regNo, String regDate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.regNo = regNo;
@@ -51,11 +48,11 @@ public class UserDTO {
         this.regNo = regNo;
     }
 
-    public LocalDateTime getRegDate() {
+    public String getRegDate() {
         return regDate;
     }
 
-    public void setRegDate(LocalDateTime regDate) {
+    public void setRegDate(String regDate) {
         this.regDate = regDate;
     }
 
@@ -78,7 +75,7 @@ public class UserDTO {
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", regNo=" + regNo +
-                ", regDate="+ formatDate(regDate)+
+                ", regDate="+ regDate +
                 " ";
     }
 }

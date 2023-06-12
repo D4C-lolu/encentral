@@ -2,7 +2,6 @@ package D4C.encentral.dto.user.teacher;
 
 import D4C.encentral.dto.user.UserDTO;
 
-import java.time.LocalDateTime;
 
 /**
  * A DTO for representing a teacher object
@@ -13,7 +12,7 @@ public class TeacherDTO extends UserDTO {
         super();
     }
 
-    public TeacherDTO(String firstName, String lastName, Long regNo, LocalDateTime regDate){
+    public TeacherDTO(String firstName, String lastName, Long regNo, String regDate){
         super(firstName,lastName,regNo,regDate);
     }
 

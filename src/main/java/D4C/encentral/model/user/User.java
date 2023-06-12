@@ -16,7 +16,7 @@ import static D4C.util.FormatDate.formatDate;
  * regNo is used for comparison's and hashing
  */
 @MappedSuperclass
-public class User  {
+abstract public class User  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -90,6 +90,14 @@ public class User  {
 
     public void setRegNo(Long regNo) {
         this.regNo = regNo;
+    }
+
+    public LocalDateTime getRegDate() {
+        return regDate;
+    }
+
+    public void setRegDate(LocalDateTime regDate) {
+        this.regDate = regDate;
     }
 
     @Override

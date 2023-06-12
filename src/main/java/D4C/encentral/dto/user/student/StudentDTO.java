@@ -4,7 +4,6 @@ import D4C.encentral.dto.user.UserDTO;
 import D4C.encentral.dto.user.teacher.TeacherDTO;
 import D4C.encentral.model.user.Year;
 
-import java.time.LocalDateTime;
 
 /**
  * A DTO for representing a student object
@@ -34,7 +33,7 @@ public class StudentDTO extends UserDTO {
         super();
     }
 
-    public StudentDTO(String firstName, String lastName, Long regNo, Year year, LocalDateTime regDate) {
+    public StudentDTO(String firstName, String lastName, Long regNo, Year year, String regDate) {
         super(firstName, lastName, regNo,regDate);
         this.year = year;
     }
